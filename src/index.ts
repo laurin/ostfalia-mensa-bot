@@ -13,6 +13,8 @@ bot.onText(/\/chatid/, (msg) => {
 
 console.log(`bot started...`);
 
-new cron.CronJob('30 7  *  *  *', () => console.log('moin')).start();
-
-api.getTodaysMenu().then(menu => bot.sendMessage(config.TELEGRAM_CHAT, menu, { parse_mode: 'HTML' }));
+new cron.CronJob('30 7  *  *  *', () => api
+  .getTodaysMenu()
+  .then(menu => bot.sendMessage(config.TELEGRAM_CHAT, menu, { parse_mode: 'HTML' })),
+)
+  .start();
