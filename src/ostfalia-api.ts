@@ -26,6 +26,11 @@ export class OstfaliaApi {
     const url = `${API_BASE}/${this.getDate(d)}`;
 
     const menu = await fetch(url).then(res => res.json()) as OstfaliaApiMenu;
+
+    if (menu.meals.length === 0) {
+      throw new Error("no food today");
+    }
+
     const lanes = this.sortLanes(menu);
 
     const formattedMenu = lanes

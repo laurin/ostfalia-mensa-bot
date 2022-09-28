@@ -15,6 +15,7 @@ console.log(`bot started...`);
 
 new cron.CronJob(config.SEND_CRON, () => api
   .getTodaysMenu()
-  .then(menu => bot.sendMessage(config.TELEGRAM_CHAT, menu, { parse_mode: 'HTML' })),
+  .then(menu => bot.sendMessage(config.TELEGRAM_CHAT, menu, { parse_mode: 'HTML' }))
+  .catch(err => console.error(err)),
 )
   .start();
