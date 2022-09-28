@@ -33,11 +33,11 @@ export class OstfaliaApi {
         .map(item => `<b>${item.name}</b> - ${item.price.student} €`)
         .join('\n')
         }`)
-      .join('\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n');
+      .join('\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n');
 
     return [
       `Ostfalia-Speiseplan für ${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`,
-      '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+      '- - - - - - - - - - - - - - - - - - - - - - - - - - -',
       formattedMenu,
     ].join('\n');
   }
