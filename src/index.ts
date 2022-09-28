@@ -13,7 +13,7 @@ bot.onText(/\/chatid/, (msg) => {
 
 console.log(`bot started...`);
 
-new cron.CronJob('30 7  *  *  *', () => api
+new cron.CronJob(config.SEND_CRON, () => api
   .getTodaysMenu()
   .then(menu => bot.sendMessage(config.TELEGRAM_CHAT, menu, { parse_mode: 'HTML' })),
 )
