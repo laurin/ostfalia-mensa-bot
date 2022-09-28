@@ -1,0 +1,23 @@
+{
+  "name": "ostfalia-mensa-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cron": "^2.1.0",
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^16.0.2",
+    "envalid": "^7.3.1",
+    "node-telegram-bot-api": "^0.59.0"
+  },
+  "devDependencies": {
+    "@types/cron": "^2.0.0",
+    "@types/node-telegram-bot-api": "^0.57.1",
+    "nodemon": "^2.0.20"
+  }
+}
