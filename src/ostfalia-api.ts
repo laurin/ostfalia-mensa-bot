@@ -3,6 +3,10 @@ import fetch from 'cross-fetch';
 
 const API_BASE = "https://sls.api.stw-on.de/v1/location/130/menu"
 
+function laneHasNM(lane: OstfaliaApiMenuLane): boolean {
+  return lane.items.some(i => i.tags.categories.some(c => c.id === 'NM'));
+}
+
 export class OstfaliaApi {
   private getDate(d: Date) {
     return `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, "0")}-${d.getDate().toString().padStart(2, "0")}`;
@@ -34,7 +38,7 @@ export class OstfaliaApi {
     const lanes = this.sortLanes(menu);
 
     const formattedMenu = lanes
-      .map(lane => `<i>${lane.name}</i>\n${lane.items
+      .map(lane => `<i>${lane.name}${laneHasNM(lane) ? ' 🐴' : ''}</i>\n${lane.items
         .map(item => `<b>${item.name}</b> - ${item.price.student} €`)
         .join('\n')
         }`)
