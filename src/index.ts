@@ -11,6 +11,12 @@ bot.onText(/\/chatid/, (msg) => {
   bot.sendMessage(msg.chat.id, msg.chat.id.toString());
 });
 
+bot.onText(/\/menu/, (msg) => {
+  api
+    .getTodaysMenu()
+    .then(menu => bot.sendMessage(msg.chat.id, menu, { parse_mode: 'HTML' }))
+});
+
 console.log(`bot started...`);
 
 new cron.CronJob(config.SEND_CRON, () => api
